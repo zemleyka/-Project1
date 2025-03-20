@@ -23,3 +23,52 @@ void main()
  cout << "Измененная строка: " << arr << endl;
  system("pause");
 }
+
+код с комментариями:
+#include <iostream>
+#include <cctype>
+#include <clocale> // Для setlocale
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru_RU.UTF-8"); // Устанавливаем локаль для поддержки кириллицы
+
+    int n = 12; // Размер строки
+    char arr[13]; // Массив для хранения строки (12 символов + нулевой терминатор)
+
+    cout << "Введите строку из " << n << " символов:" << endl;
+    cout << "arr = ";
+    cin.getline(arr, 13);
+
+    // Обрезаем или дополняем строку, если введено больше или меньше символов
+    int len = 0;
+    while (arr[len] != '\0' && len < n) {
+        len++;
+    }
+
+    if (len < n) {
+        // Дополняем пробелами
+        for (int i = len; i < n; i++) {
+            arr[i] = ' ';
+        }
+        arr[n] = '\0'; // Добавляем нулевой терминатор в конце
+    } else if (len > n) {
+        // Обрезаем строку
+        arr[n] = '\0'; // Добавляем нулевой терминатор на нужном месте
+    }
+
+
+    for (int i = 0; i < n; i++) {
+        if (isdigit(arr[i])) {
+            arr[i] = '!';
+        }
+    }
+
+    cout << "Измененная строка: " << arr << endl;
+
+    cout << "Нажмите Enter, чтобы завершить..." << endl;
+    cin.get(); // Ожидаем нажатия Enter перед завершением программы
+
+    return 0;
+}
