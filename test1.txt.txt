@@ -1,1 +1,24 @@
 gedbdbdbdb
+
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+void main()
+{
+ system("chcp 1251");
+ char arr[12]; 
+ int n = 12; 
+ cout << "Введите строку из 12 символов:" << endl;
+ cout << "arr = ";
+ cin.getline(arr, 13); 
+ for (int i = 0; i < n; i++)
+ {
+  if (isdigit(arr[i])) 
+  {
+   arr[i] = '!'; 
+  }
+ }
+ cout << "Измененная строка: " << arr << endl;
+ system("pause");
+}
